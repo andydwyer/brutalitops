@@ -29,6 +29,7 @@ class Brutalitops
         end
     end
 
+    #TODO: refactor out permutation blocks
     def print_permutations_to_console(verbose=true)
         candidates = []
         puts "Generating permutations..." if verbose
@@ -70,8 +71,24 @@ class Brutalitops
         end
         puts "Finished generating csv." if verbose
     end
+
+    #TODO: remove puts after testing
+    def to_array
+        candidates = []
+        puts "Generating permutations..."
+
+        @min.upto(@max) do |i|
+            puts "Building permutation with #{i} choices. This might take some time."
+            temp_arr = @selection.repeated_permutation(i).to_a
+            temp_arr.each {|t| candidates << t.join.to_s}
+            puts "Finished building permutation with #{i} choices."
+        end
+        
+        candidates
+    end
 end
 
+#test things out
 def time_it(label)
     start_time = Time.now
     yield
@@ -79,10 +96,12 @@ def time_it(label)
     puts "#{label} took #{elapsed_time} seconds"
 end
 
-b = Brutalitops.new(2, 3, [:specials, :alpha_uppercase])
+b = Brutalitops.new(2, 3, [:alpha_lowercase])
+a = []
 
 time_it("print_to_csv") do
-    b.print_permutations_to_csv(false)
+    a = b.to_array
 end
 
-
+puts a.class
+puts a.size
