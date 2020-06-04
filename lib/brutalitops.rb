@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-module Brutalitops
+
     class Brutalitops
 
         def initialize(min, max, options=[])
@@ -71,7 +71,7 @@ module Brutalitops
         end
 
     end
-end
+
 
 #test things out
 # def time_it(label)
