@@ -17,6 +17,8 @@ b = Brutalitops.new(1,3,[:alpha_lowercase, :alpha_uppercase, :nums, :special_cha
 ["ä", "ö", "ü"] = any array of elements
 
 All arrays passed in as the 3rd argument are concatentated.
+
+Note: Generating permutations when max_length_of_the_permutation > 3 might take a long time (i.e. hours) depending on your processing power.
 ```
 
 ## Methods
